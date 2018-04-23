@@ -1,0 +1,37 @@
+version: '3'
+
+volumes:
+  dockerapp-db-data:
+    driver: local
+  dockerapp-redis-data:
+    driver: local
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - dockerapp-db-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis
+    volumes:
+      - dockerapp-redis-data:/var/lib/redis/data
+
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    volumes:
+      - .:/docker_app
+    depends_on:
+      - db
+      - redis
+
+  api:
+    build: .
+    command: bundle exec rails s -b 0.0.0.0
+    volumes:
+      - .:/docker_app
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
