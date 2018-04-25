@@ -14,3 +14,7 @@ before_install:
 
 before_script:
   - echo 'Testing Docker Hub credentials'
+
+script:
+  - docker-compose up -d
+  - docker-compose ps
