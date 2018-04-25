@@ -6,3 +6,9 @@ services:
 script:
   - docker-compose up -d
   - docker-compose run --rm api bundle exec rake
+
+after_success:
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  - export REPO=alejandrodevs/dockerapp
+  - docker build -f Dockerfile -t $REPO:$COMMIT .
+  - docker push $REPO:$COMMIT
