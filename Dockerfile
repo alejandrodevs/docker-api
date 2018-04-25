@@ -1,6 +1,6 @@
 FROM ruby:2.5.0
 
-ENV APP_HOME /docker_app
+ENV APP_HOME /docker-api
 WORKDIR $APP_HOME
 
 RUN apt-get update -qq && apt-get install -y \

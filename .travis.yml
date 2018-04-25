@@ -6,7 +6,7 @@ services:
 env:
   global:
     # Docker login credentials are set in TravisCI.
-    - DOCKER_REPO=alejandrodevs/dockerapp
+    - DOCKER_REPO=alejandrodevs/docker-api
 
 # skip the installation.
 install: true

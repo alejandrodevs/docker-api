@@ -17,20 +17,20 @@ services:
 
   sidekiq:
     build: .
-    image: alejandrodevs/dockerapp
+    image: alejandrodevs/docker-api
     command: bundle exec sidekiq -C config/sidekiq.yml
     volumes:
-      - .:/docker_app
+      - .:/docker-api
     depends_on:
       - db
       - redis
 
   api:
     build: .
-    image: alejandrodevs/dockerapp
+    image: alejandrodevs/docker-api
     command: bundle exec rails s -b 0.0.0.0
     volumes:
-      - .:/docker_app
+      - .:/docker-api
     ports:
       - 3000:3000
     depends_on:
