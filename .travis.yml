@@ -3,6 +3,9 @@ sudo: required
 services:
   - docker
 
+# skip the installation.
+install: true
+
 script:
   - docker-compose up -d
   - docker-compose run --rm api bundle exec rake
