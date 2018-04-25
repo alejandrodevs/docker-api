@@ -9,12 +9,7 @@ env:
     - REGISTRY_USER=myrobot
     - REGISTRY_PASS=...
 
-before_install:
-  - docker-compose --version
-
-before_script:
-  - echo 'Testing Docker Hub credentials'
-
 script:
   - docker-compose up -d
   - docker-compose ps
+  - docker-compose run --rm api bundle exec rake
