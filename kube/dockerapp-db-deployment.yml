@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockerapp-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dockerapp-db
+  template:
+    metadata:
+      labels:
+        app: dockerapp-db
+    spec:
+      containers:
+      - name: dockerapp-db
+        image: postgres
+        ports:
+        - containerPort: 5432

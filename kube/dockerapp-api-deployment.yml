@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockerapp-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dockerapp-api
+  template:
+    metadata:
+      labels:
+        app: dockerapp-api
+    spec:
+      containers:
+      - name: dockerapp-api
+        imagePullPolicy: IfNotPresent
+        image: dockerapp/api:latest
+        ports:
+        - containerPort: 3000

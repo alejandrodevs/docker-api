@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockerapp-sidekiq-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dockerapp-sidekiq
+  template:
+    metadata:
+      labels:
+        app: dockerapp-sidekiq
+    spec:
+      containers:
+      - name: dockerapp-sidekiq
+        imagePullPolicy: IfNotPresent
+        image: dockerapp/sidekiq:latest
