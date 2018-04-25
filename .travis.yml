@@ -8,10 +8,11 @@ install: true
 
 script:
   - docker-compose up -d
+  - docker images
   - docker-compose run --rm api bundle exec rake
 
 after_success:
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - docker login --username=$DOCKER_USER --password-stdin=$DOCKER_PASS
   - export REPO=alejandrodevs/dockerapp
-  - docker build -t $REPO:$COMMIT .
-  - docker push $REPO:$COMMIT
+  - docker build -t alejandrodevs/dockerapp:v2 .
+  - docker push alejandrodevs/dockerapp:v2
