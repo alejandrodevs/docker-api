@@ -13,3 +13,7 @@ group :development do
   gem 'spring', '2.0.2'
   gem 'spring-watcher-listen', '2.0.1'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '3.7.2'
+end
