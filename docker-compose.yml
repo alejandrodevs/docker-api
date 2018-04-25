@@ -2,9 +2,7 @@ version: '3'
 
 volumes:
   db_data:
-    driver: local
   redis_data:
-    driver: local
 
 services:
   db:
