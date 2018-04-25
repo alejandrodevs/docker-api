@@ -1,0 +1,13 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  global:
+    - IMAGE_NAME=alejandrodevs/dockerapp-api
+    - REGISTRY_USER=myrobot
+    - REGISTRY_PASS=...
+
+before_script:
+  - echo 'Testing Docker Hub credentials'
