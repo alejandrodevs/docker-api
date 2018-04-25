@@ -3,16 +3,20 @@ sudo: required
 services:
   - docker
 
+env:
+  global:
+    # Docker login credentials are set in TravisCI.
+    - DOCKER_REPO=alejandrodevs/dockerapp
+
 # skip the installation.
 install: true
 
 script:
   - docker-compose up -d
-  - docker images
   - docker-compose run --rm api bundle exec rake
 
 after_success:
-  - docker login --username=$DOCKER_USER --password-stdin=$DOCKER_PASS
-  - export REPO=alejandrodevs/dockerapp
-  - docker build -t alejandrodevs/dockerapp:v2 .
-  - docker push alejandrodevs/dockerapp:v2
+  - echo $TRAVIS_COMMIT
+  - docker login --username=$DOCKER_USER --password=$DOCKER_PASS
+  - docker build -t $DOCKER_REPO:$TRAVIS_COMMIT .
+  - docker push $DOCKER_REPO:$TRAVIS_COMMIT
