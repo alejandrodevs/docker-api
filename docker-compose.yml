@@ -19,7 +19,7 @@ services:
 
   sidekiq:
     build: .
-    image: alejandrodevs/dockerapp-sidekiq
+    image: alejandrodevs/dockerapp
     command: bundle exec sidekiq -C config/sidekiq.yml
     volumes:
       - .:/docker_app
@@ -29,7 +29,7 @@ services:
 
   api:
     build: .
-    image: alejandrodevs/dockerapp-api
+    image: alejandrodevs/dockerapp
     command: bundle exec rails s -b 0.0.0.0
     volumes:
       - .:/docker_app

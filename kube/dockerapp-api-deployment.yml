@@ -14,7 +14,6 @@ spec:
     spec:
       containers:
       - name: dockerapp-api
-        imagePullPolicy: IfNotPresent
-        image: dockerapp/api:latest
+        image: alejandrodevs/dockerapp
         ports:
         - containerPort: 3000

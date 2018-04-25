@@ -14,5 +14,4 @@ spec:
     spec:
       containers:
       - name: dockerapp-sidekiq
-        imagePullPolicy: IfNotPresent
-        image: dockerapp/sidekiq:latest
+        image: alejandrodevs/dockerapp
