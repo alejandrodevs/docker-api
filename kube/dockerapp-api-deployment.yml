@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dockerapp-api-deployment
+  name: docker-api-deployment
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: dockerapp-api
+      app: docker-api
   template:
     metadata:
       labels:
-        app: dockerapp-api
+        app: docker-api
     spec:
       containers:
-      - name: dockerapp-api
-        image: alejandrodevs/dockerapp
+      - name: docker-api
+        image: alejandrodevs/docker-api
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000

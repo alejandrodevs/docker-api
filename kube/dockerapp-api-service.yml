@@ -1,13 +1,15 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: dockerapp-api-service
+  name: docker-api-service
 spec:
   selector:
-    app: dockerapp-api
-  type: NodePort
+    app: docker-api
+  type: LoadBalancer
   ports:
   - name: http
     protocol: TCP
     port: 80
     targetPort: 3000
+status:
+  loadBalancer: {}

@@ -6,5 +6,5 @@ spec:
   ports:
     - port: 6379
   selector:
-    app: dockerapp-redis
+    app: docker-api-redis
 

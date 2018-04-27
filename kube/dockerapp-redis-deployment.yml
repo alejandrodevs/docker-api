@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dockerapp-redis-deployment
+  name: docker-api-redis-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: dockerapp-redis
+      app: docker-api-redis
   template:
     metadata:
       labels:
-        app: dockerapp-redis
+        app: docker-api-redis
     spec:
       containers:
-      - name: dockerapp-redis
+      - name: docker-api-redis
         image: redis
         ports:
         - containerPort: 6379
